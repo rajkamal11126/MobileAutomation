@@ -1,0 +1,28 @@
+{
+	"confirmMPIN":{
+		"confirmPasswordMPINOne":"1",
+		"confirmPasswordMPINTwo":"2",
+		"confirmPasswordMPINThree":"3",
+		"confirmPasswordMPINFour":"4"
+	},
+	"MPIN":{
+		"passwordMPINOne":"1",
+		"passwordMPINTwo":"2",
+		"passwordMPINThree":"3",
+		"passwordMPINFour":"4"
+	},
+
+	"validUser":{
+		"username":"+919113427595",
+		"passwordOne":"1",
+		"passwordTwo":"2",
+		"passwordThree":"3",
+		"passwordFour":"4"
+	},
+	"membersDetails":{
+		"firstName":"Raj",
+		"lastName":"Kamal",
+		"mobileNumber":"+919113427595",
+		"emailAddress": "rajkamal111@gmail.com"
+	}
+}
