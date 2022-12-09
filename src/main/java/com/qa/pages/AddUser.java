@@ -54,6 +54,16 @@ public class AddUser extends BaseTest {
     private MobileElement saveButton;
 
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup[3]/android.widget.ImageView")
+    private MobileElement backButton;
+
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.widget.ImageView")
+    private MobileElement backButtonInSelectDoctor;
+
+    @AndroidFindBy(id = "com.manipal.manipalhospitals.test:id/back_btn")
+    private MobileElement backButtonInSelectDepartment;
+
+
     public AddUser appointment(String elementName) {
         scrollToElement(elementName);
         click(selectAddMember);
@@ -68,25 +78,25 @@ public class AddUser extends BaseTest {
 
 
     public AddUser enterFirstName(String first_Name) {
-        clear(firstName);
+//        clear(firstName);
         sendKeys(firstName, first_Name);
         return this;
     }
 
     public AddUser enterLastName(String last_Name) {
-        clear(lastName);
+//        clear(lastName);
         sendKeys(lastName, last_Name);
         return this;
     }
 
     public AddUser enterMobileNumber(String mobileNo) {
-        clear(mobileNumber);
+//        clear(mobileNumber);
         sendKeys(mobileNumber, mobileNo);
         return this;
     }
 
     public AddUser enterEmail(String email) {
-        clear(emailID);
+//        clear(emailID);
         sendKeys(emailID, email);
         return this;
     }
@@ -116,6 +126,21 @@ public class AddUser extends BaseTest {
 
     public AddUser saveDetails() {
         click(saveButton);
+        return this;
+    }
+
+    public AddUser back() {
+            click(backButton);
+            return this;
+    }
+
+    public AddUser backButtonOfSelectDoctorScreen(){
+        click(backButtonInSelectDoctor);
+        return this;
+    }
+
+    public AddUser backButtonOfSelectDepartmentScreen(){
+        click(backButtonInSelectDepartment);
         return this;
     }
 }

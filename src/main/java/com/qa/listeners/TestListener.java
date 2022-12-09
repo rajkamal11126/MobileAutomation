@@ -23,6 +23,7 @@ import java.util.Map;
 
 public class TestListener implements ITestListener {
 	TestUtils utils = new TestUtils();
+	BaseTest base = new BaseTest();
 	
 	public void onTestFailure(ITestResult result) {
 		if(result.getThrowable() != null) {
@@ -31,8 +32,7 @@ public class TestListener implements ITestListener {
 			  result.getThrowable().printStackTrace(pw);
 			  utils.log().error(sw.toString());
 		}
-		
-		BaseTest base = new BaseTest();
+
 		File file = base.getDriver().getScreenshotAs(OutputType.FILE);
 		
 		byte[] encoded = null;
@@ -69,7 +69,6 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		BaseTest base = new BaseTest();
 		ExtentReport.startTest(result.getName(), result.getMethod().getDescription())
 		.assignCategory(base.getPlatform() + "_" + base.getDeviceName())
 		.assignAuthor("RajKamal");
@@ -85,7 +84,6 @@ public class TestListener implements ITestListener {
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		ExtentReport.getTest().log(Status.SKIP, "Test Skipped");
-		
 	}
 
 	@Override

@@ -5,6 +5,8 @@ import com.qa.utils.TestUtils;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
+import static org.testng.Assert.fail;
+
 public class SlotChecking extends BaseTest {
 
     @Override
@@ -14,7 +16,7 @@ public class SlotChecking extends BaseTest {
 
     TestUtils utils = new TestUtils();
 
-    @AndroidFindBy(id = "com.manipal.manipalhospitals.test:id/labelHello")
+    @AndroidFindBy(id = "com.manipal.manipalhospitals.test:id/labelUserName")
     private static MobileElement productTitleTxt;
 
     @AndroidFindBy(id = "com.manipal.manipalhospitals.test:id/button_send_otp")
@@ -27,10 +29,10 @@ public class SlotChecking extends BaseTest {
     private MobileElement selectDoctor;
 
 
-    @AndroidFindBy(id = "com.manipal.manipalhospitals.test:id/actionHvButton")
+    @AndroidFindBy(id = "com.manipal.manipalhospitals.test:id/vcActive")
     private MobileElement selectVideoConsultation;
 
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup[3]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/androidx.recyclerview.widget.RecyclerView[1]/androidx.cardview.widget.CardView[2]/android.view.ViewGroup")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup[3]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/androidx.recyclerview.widget.RecyclerView[1]/androidx.cardview.widget.CardView[1]/android.view.ViewGroup")
     private MobileElement selectDate;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup[3]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[1]/android.widget.TextView")
@@ -54,7 +56,7 @@ public class SlotChecking extends BaseTest {
     private MobileElement cancelButton;
 
 
-    public static String getTitle() {
+    public String getTitle() throws InterruptedException {
         String title = getText(productTitleTxt, "product page title is - ");
         return title;
     }
@@ -88,10 +90,6 @@ public class SlotChecking extends BaseTest {
     public SlotChecking selectDateOfAppointment() {
             click(selectDate);
             return this;
-//        catch (Exception e) {
-//            System.out.println("slots are not available");
-//        }
-//        return null;
     }
 
     public SlotChecking selectDayOfAppointment() {
@@ -100,7 +98,6 @@ public class SlotChecking extends BaseTest {
             return this;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Slots are not available");
         }
         return null;
     }
@@ -108,8 +105,9 @@ public class SlotChecking extends BaseTest {
     public SlotChecking selectTimeOfAppointment() {
         try {
             click(selectTime);
+            click(cancelButton);
         } catch (Exception e) {
-            System.out.println("Slots are not available");
+            fail();
         }
         return this;
     }

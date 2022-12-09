@@ -77,35 +77,35 @@ public class LoginPage extends BaseTest {
     private MobileElement errTxt;
 
     public LoginPage enterUserName(String username) {
-        clear(enterMobileNumber);
+//        clear(enterMobileNumber);
         sendKeys(enterMobileNumber, username, "Login with" + enterMobileNumber);
         return this;
     }
 
     public LoginPage enterPasswordOne(String passwordOne) throws InterruptedException {
         Thread.sleep(1000);
-        clear(oneDigit);
+//        clear(oneDigit);
         sendKeys(oneDigit, passwordOne);
 
         return this;
     }
 
     public LoginPage enterPasswordTwo(String passwordTwo) {
-        clear(twoDigit);
+//        clear(twoDigit);
         sendKeys(twoDigit, passwordTwo);
 
         return this;
     }
 
     public LoginPage enterPasswordThree(String passwordThree) {
-        clear(threeDigit);
+//        clear(threeDigit);
         sendKeys(threeDigit, passwordThree);
 
         return this;
     }
 
     public LoginPage enterPasswordFour(String passwordFour) {
-        clear(fourDigit);
+//        clear(fourDigit);
         sendKeys(fourDigit, passwordFour);
         return this;
     }
@@ -117,26 +117,26 @@ public class LoginPage extends BaseTest {
 
 
     public LoginPage enterMPINOne(String passwordMPINOne) throws InterruptedException {
-        Thread.sleep(1000);
-        clear(oneMPIN);
+        Thread.sleep(2000);
+//        clear(oneMPIN);
         sendKeys(oneMPIN, passwordMPINOne);
         return this;
     }
 
     public LoginPage enterMPINTwo(String passwordMPINTwo) {
-        clear(twoMPIN);
+//        clear(twoMPIN);
         sendKeys(twoMPIN, passwordMPINTwo);
         return this;
     }
 
     public LoginPage enterMPINThree(String passwordMPINThree) {
-        clear(threeMPIN);
+//        clear(threeMPIN);
         sendKeys(threeMPIN, passwordMPINThree);
         return this;
     }
 
     public LoginPage enterMPINFour(String passwordMPINFour) {
-        clear(fourMPIN);
+//        clear(fourMPIN);
         sendKeys(fourMPIN, passwordMPINFour);
         return this;
     }

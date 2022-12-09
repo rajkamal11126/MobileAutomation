@@ -27,7 +27,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,7 +41,7 @@ import java.util.Properties;
 public class BaseTest {
 
 
-	protected static ThreadLocal <AppiumDriver> driver = new ThreadLocal<AppiumDriver>();
+	protected static ThreadLocal <AndroidDriver> driver = new ThreadLocal<AndroidDriver>();
 	protected static ThreadLocal <Properties> props = new ThreadLocal<Properties>();
 	protected static ThreadLocal <HashMap<String, String>> strings = new ThreadLocal<HashMap<String, String>>();
 	protected static ThreadLocal <String> platform = new ThreadLocal<String>();
@@ -56,7 +55,7 @@ public class BaseTest {
 	  }
 	  
 	  public void setDriver(AppiumDriver driver2) {
-		  driver.set(driver2);
+		  driver.set((AndroidDriver) driver2);
 	  }
 	  
 	  public Properties getProps() {
@@ -105,7 +104,7 @@ public class BaseTest {
 	
 	@BeforeMethod
 	public void beforeMethod() {
-		((CanRecordScreen) getDriver()).startRecordingScreen();
+//		((CanRecordScreen) getDriver()).startRecordingScreen();
 	}
 	
 //	stop video capturing and create *.mp4 file
@@ -140,11 +139,11 @@ public class BaseTest {
 	}
 	
 	@BeforeSuite
-	public void beforeSuite() throws Exception, Exception {
+	public void beforeSuite() throws Exception {
 		ThreadContext.put("ROUTINGKEY", "ServerLogs");
 //		server = getAppiumService(); // -> If using Mac, uncomment this statement and comment below statement
 		server = getAppiumServerDefault(); // -> If using Windows, uncomment this statement and comment above statement
-		if(!checkIfAppiumServerIsRunnning(4723)) {
+		if(!checkIfAppiumServerIsRunning(4723)) {
 			server.start();
 			server.clearOutPutStreams(); // -> Comment this if you don't want to see server logs in the console
 			utils.log().info("Appium server started");
@@ -153,7 +152,7 @@ public class BaseTest {
 		}	
 	}
 	
-	public boolean checkIfAppiumServerIsRunnning(int port) throws Exception {
+	public boolean checkIfAppiumServerIsRunning(int port) throws Exception {
 	    boolean isAppiumServerRunning = false;
 	    ServerSocket socket = null;
 	    try {
@@ -390,8 +389,7 @@ public class BaseTest {
   }
 
 	@AfterSuite
-        public static void SendingMail() throws InterruptedException {
-
+	public static void SendingMail() throws InterruptedException {
                 Runtime r=Runtime.getRuntime();
                 r.addShutdownHook(new Thread() {
                                           public void run(){
